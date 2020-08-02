@@ -1,19 +1,19 @@
 class Team {
-    constructor(name, type, health, level, attack, defance) {
-        this.name = name;
-        this.type = type;
-        this.health = health;
-        this.level = level;
-        this.attack = attack;
-        this.defance = defance;
+    constructor(arr) {
+        this.arrayPerson = arr;
+    }
+
+    getIndex(index) {
+        return this.arrayPerson[index];
     }
 
     *[Symbol.iterator]() {
-        yield {"name": this.name,
-               "type": this.type,
-               "health": this.health,
-               "level": this.level,
-               "attack": this.attack,
-               "defance": this.defance};
+        let current = 0;
+        let last = this.arrayPerson.length;
+
+        while (current < last) {
+            yield this.getIndex(current);
+            current++;
+        }
     }
 }
